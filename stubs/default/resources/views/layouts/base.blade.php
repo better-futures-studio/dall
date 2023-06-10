@@ -1,30 +1,64 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        @hasSection('title')
+<html
+    x-data="{
+        systemTheme: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+        userTheme: $persist(null).as('userTheme'),
+        get theme() {
+            return this.userTheme || this.systemTheme;
+        },
+    }"
+    x-init="window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        systemTheme = event.matches ? 'dark' : 'light';
+    });"
+    x-bind:data-theme="theme"
+    lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+>
 
-            <title>@yield('title') - {{ config('app.name') }}</title>
-        @else
-            <title>{{ config('app.name') }}</title>
-        @endif
+<head>
+    {{-- This prevents the page from flickering when loading the user's theme because of the delay of Alpine being loaded. --}}
+    <script>
+        document.getElementsByTagName('html')[0].dataset.theme = JSON.parse(localStorage.getItem('userTheme')) ||
+            (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    </script>
+    <meta charset="utf-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+    @hasSection('title')
+        <title>@yield('title') - {{ config('app.name') }}</title>
+    @else
+        <title>{{ config('app.name') }}</title>
+    @endif
 
-        <!-- Favicon -->
-		<link rel="shortcut icon" href="{{ url(asset('favicon.ico')) }}">
+    <!-- Favicon -->
+    <link
+        href="{{ url(asset('favicon.ico')) }}"
+        rel="shortcut icon"
+    >
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <!-- Fonts -->
+    <link
+        href="https://rsms.me/inter/inter.css"
+        rel="stylesheet"
+    >
 
-        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-        @livewireStyles
-        @livewireScripts
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
+    @livewireScripts
 
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-    </head>
+    <!-- CSRF Token -->
+    <meta
+        name="csrf-token"
+        content="{{ csrf_token() }}"
+    >
+</head>
 
-    <body>
-        @yield('body')
-    </body>
+<body>
+    @yield('body')
+    <div class="fixed bottom-4 right-4">
+        <x-theme-selector class="dropdown-top dropdown-end" />
+    </div>
+</body>
+
 </html>

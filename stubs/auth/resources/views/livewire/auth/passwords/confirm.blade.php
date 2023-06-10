@@ -1,52 +1,63 @@
 @section('title', 'Confirm your password')
 
 <div>
-    <div class="sm:mx-auto sm:w-full sm:max-w-md">
-        <a href="{{ route('home') }}">
-            <x-logo class="w-auto h-16 mx-auto text-indigo-600" />
-        </a>
+    <div>
+        <div class="sm:mx-auto sm:w-full sm:max-w-md">
+            <a href="{{ route('home') }}">
+                <x-logo class="text-content-base mx-auto h-16 w-auto" />
+            </a>
 
-        <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900 leading-9">
-            Confirm your password
-        </h2>
-        <p class="mt-2 text-sm text-center text-gray-600 leading-5 max-w">
-            Please confirm your password before continuing
-        </p>
-    </div>
+            <h2 class="text-content-base mt-6 text-center text-3xl font-extrabold leading-9">
+                Confirm your password
+            </h2>
+            <p class="max-w text-content-base mt-2 text-center text-sm leading-5">
+                Please confirm your password before continuing
+            </p>
+        </div>
 
-    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
-            <form wire:submit.prevent="confirm">
-                <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700 leading-5">
-                        Password
-                    </label>
+        <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+            <div class="bg-base-300 px-4 py-8 shadow sm:rounded-lg sm:px-10">
+                <form wire:submit.prevent="confirm">
+                    <div class="form-control w-full">
+                        <label class="label">
+                            <span class="label-text">Password</span>
+                        </label>
+                        <input
+                            class="@error('password') input-error @enderror input-bordered input w-full"
+                            type="password"
+                            required
+                            autofocus
+                            wire:model.lazy="password"
+                        />
 
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input wire:model.lazy="password" id="password" name="password" type="password" required autofocus class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('password') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
+                        @error('password')
+                            <p class="text-error mt-2 text-sm">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    @error('password')
-                        <p class="mt-2 text-sm text-red-600" id="password-error">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div class="flex items-center justify-end mt-6">
-                    <div class="text-sm leading-5">
-                        <a href="{{ route('password.request') }}" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-                            Forgot your password?
-                        </a>
+                    <div class="mt-4 flex items-center justify-end">
+                        <div class="text-sm leading-5">
+                            <a
+                                class="link"
+                                href="{{ route('password.request') }}"
+                            >
+                                Forgot your password?
+                            </a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="mt-6">
-                    <span class="block w-full rounded-md shadow-sm">
-                        <button type="submit" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:ring-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-                            Confirm password
-                        </button>
-                    </span>
-                </div>
-            </form>
+                    <div class="mt-6">
+                        <span class="block w-full rounded-md shadow-sm">
+                            <button
+                                class="btn-neutral btn w-full"
+                                type="submit"
+                            >
+                                Confirm password
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

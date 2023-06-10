@@ -1,12 +1,14 @@
 {
-    "name": "laravel-frontend-presets/tall",
-    "description": "TALL preset for Laravel.",
+    "name": "better-futures-studio/dall",
+    "description": "DALL preset for Laravel.",
     "keywords": [
         "alpine",
         "alpinejs",
         "tailwind",
         "tailwindcss",
         "tailwindui",
+        "daisyui",
+        "dall",
         "tall",
         "laravel",
         "livewire",
@@ -14,21 +16,13 @@
     ],
     "license": "MIT",
     "support": {
-        "issues": "https://github.com/laravel-frontend-presets/tall/issues",
-        "source": "https://github.com/laravel-frontend-presets/tall"
+        "issues": "https://github.com/better-futures-studio/dall/issues",
+        "source": "https://github.com/better-futures-studio/dall"
     },
     "authors": [
         {
-            "name": "Dan Harrin",
-            "email": "Dan@DanHarrin.com"
-        },
-        {
-            "name": "Liam Hammett",
-            "email": "liam@liamhammett.com"
-        },
-        {
-            "name": "Ryan Chandler",
-            "email": "support@ryangjchandler.co.uk"
+            "name": "Abdel Elrafa",
+            "email": "abdel@abdelelrafa.com"
         }
     ],
     "require": {
@@ -41,18 +35,18 @@
     },
     "autoload": {
         "psr-4": {
-            "LaravelFrontendPresets\\Tall\\": "src/"
+            "BetterFuturesStudio\\Dall\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "LaravelFrontendPresets\\Tall\\Tests\\": "tests/"
+            "BetterFuturesStudio\\Dall\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "LaravelFrontendPresets\\Tall\\TallServiceProvider"
+                "BetterFuturesStudio\\Dall\\DallServiceProvider"
             ]
         }
     },

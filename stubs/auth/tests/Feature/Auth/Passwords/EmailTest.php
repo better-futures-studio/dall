@@ -3,14 +3,11 @@
 namespace Tests\Feature\Auth\Passwords;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
 
 class EmailTest extends TestCase
 {
-    use RefreshDatabase;
-
     /** @test */
     public function can_view_password_request_page()
     {

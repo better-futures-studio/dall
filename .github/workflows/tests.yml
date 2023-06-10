@@ -35,17 +35,17 @@ jobs:
       run: |
         cd ../app
         composer require livewire/livewire:^2.0
-        composer config repositories.local '{"type": "path", "url": "../tall"}' --file composer.json
-        composer require laravel-frontend-presets/tall:@dev
+        composer config repositories.local '{"type": "path", "url": "../dall"}' --file composer.json
+        composer require better-futures-studio/dall:@dev
     - name: Install preset
       run: |
         cd ../app
-        php artisan ui tall --auth
+        php artisan ui dall --auth
     - name: Overwrite configuration
       run: |
         cd ../app
         rm phpunit.xml
-        cp ../tall/.github/workflows/phpunit.xml.stub ./phpunit.xml
+        cp ../dall/.github/workflows/phpunit.xml.stub ./phpunit.xml
 
     - name: Execute tests
       run: |

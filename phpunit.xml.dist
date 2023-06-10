@@ -6,7 +6,7 @@
     </include>
   </coverage>
   <testsuites>
-    <testsuite name="TALL Test Suite">
+    <testsuite name="DALL Test Suite">
       <directory suffix=".php">./tests/</directory>
     </testsuite>
   </testsuites>

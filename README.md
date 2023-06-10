@@ -1,25 +1,30 @@
-# Laravel TALL Preset
+# This is a fork of [laravel-frontend-presets/tall](https://github.com/laravel-frontend-presets/tall) that uses daisyUI.
 
-[![CI Status](https://github.com/laravel-frontend-presets/tall/actions/workflows/tests.yml/badge.svg)](https://github.com/laravel-frontend-presets/tall/actions)
-[![Total Downloads](https://poser.pugx.org/laravel-frontend-presets/tall/d/total.svg)](https://packagist.org/packages/laravel-frontend-presets/tall)
+Using daisyUI, you can [easily change the theme of your app](https://daisyui.com/docs/themes/). You can also use the theme switcher component to allow your users to change the theme of your app on the fly.
 
-A front-end preset for Laravel to scaffold an application using the [TALL stack](https://tallstack.dev), jumpstarting your application's development.
+# Laravel DALL Preset
+
+[![CI Status](https://github.com/better-futures-studio/dall/actions/workflows/tests.yml/badge.svg)](https://github.com/better-futures-studio/dall/actions)
+[![Total Downloads](https://poser.pugx.org/better-futures-studio/dall/d/total.svg)](https://packagist.org/packages/better-futures-studio/dall)
+
+A front-end preset for Laravel to scaffold an application using the DALL stack, jumpstarting your application's development.
 
 If you're not familiar with the name, it's an acronym that describes the main technologies involved in the stack:
-- [Tailwind CSS](https://tailwindcss.com)
-- [Alpine.js](https://alpinejs.dev/)
-- [Laravel](https://laravel.com)
-- [Livewire](https://laravel-livewire.com)
 
-![Login View](./screenshot.png)
+-   [daisyUI](https://daisyui.com)
+-   [Alpine.js](https://alpinejs.dev)
+-   [Laravel](https://laravel.com)
+-   [Livewire](https://laravel-livewire.com)
+
+![Login View](./demo.gif)
 
 Some notable features of this package include:
-- Views extending a default layout
-- Front-end assets like Tailwind CSS and Alpine.js compiled with Vite 3
-- Tailwind-powered pagination views
-- The [Tailwind UI](https://tailwindui.com) and Tailwind's [Custom Forms](https://github.com/tailwindcss/custom-forms) extensions available out-of-the-box
 
-> **Note**: If you're looking for an application boilerplate that supports the TALL stack, you should check out [Laravel Jetstream](https://github.com/laravel/jetstream). It comes with authentication scaffolding, account management, teams support.
+-   Views extending a default layout
+-   Front-end assets like daisyUI and Alpine.js compiled with Vite 3
+-   daisyUI-powered pagination views
+-   A theme switcher is provided as a blade component.
+-   By default all the daisyUI themes are enabled. You can disable them in the `tailwind.config.js` file.
 
 ## Installation
 
@@ -28,9 +33,10 @@ This preset is intended to be installed into a fresh Laravel application. Follow
 ### Installation (without auth)
 
 Then simply run the following commands:
+
 ```bash
-composer require livewire/livewire laravel-frontend-presets/tall
-php artisan ui tall
+composer require livewire/livewire better-futures-studio/dall
+php artisan ui dall
 npm install
 npm run dev
 ```
@@ -40,26 +46,22 @@ npm run dev
 If you would like to install the preset and its auth scaffolding in a fresh Laravel application, make sure to use the `--auth` flag on the `ui` command:
 
 ```bash
-composer require livewire/livewire laravel-frontend-presets/tall
-php artisan ui tall --auth
+composer require livewire/livewire better-futures-studio/dall
+php artisan ui dall --auth
 npm install
 npm run dev
 ```
 
 Some notable features of the authentication scaffolding include:
-- Powered by Livewire components and single action controllers
-- Bundled with pre-written tests
+
+-   Powered by Livewire components and single action controllers
+-   Bundled with pre-written tests
 
 All routes, components, controllers and tests are published to your application. The idea behind this is that you have full control over every aspect of the scaffolding in your own app, removing the need to dig around in the vendor folder to figure out how things are working.
-
-## CSS purging
-
-Tailwind uses PurgeCSS to remove any unused classes from your production CSS builds. You can modify or remove this behaviour in the `purge` section of your `tailwind.config.js` file. For more information, please see the [Tailwind documentation](https://tailwindcss.com/docs/controlling-file-size/).
 
 ## Removing the package
 
 If you don't want to keep this package installed once you've installed the preset, you can safely remove it. Unlike the default Laravel presets, this one publishes all the auth logic to your project's `/app` directory, so it's fully redundant.
-
 
 ### A note on pagination
 
@@ -82,8 +84,12 @@ class AppServiceProvider extends ServiceProvider
 
 ## Credits
 
-- [Dan Harrin](https://github.com/DanHarrin)
-- [Liam Hammett](https://github.com/imliam)
-- [Ryan Chandler](https://github.com/ryangjchandler)
-- [Tailwind UI](https://tailwindui.com) for the default authentication and pagination views
-- [All Contributors](../../contributors)
+-   [Abdel Elrafa](https://github.com/AbdelElrafa)
+
+### The original [laravel-frontend-presets/tall](https://github.com/laravel-frontend-presets/tall) package credits:
+
+-   [Dan Harrin](https://github.com/DanHarrin)
+-   [Liam Hammett](https://github.com/imliam)
+-   [Ryan Chandler](https://github.com/ryangjchandler)
+-   [Tailwind UI](https://tailwindui.com) for the default authentication and pagination views
+-   [All Contributors](../../contributors)

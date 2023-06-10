@@ -3,7 +3,6 @@
 namespace Tests\Feature\Auth\Passwords;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
@@ -11,8 +10,6 @@ use Tests\TestCase;
 
 class ConfirmTest extends TestCase
 {
-    use RefreshDatabase;
-
     protected function setUp(): void
     {
         parent::setUp();
